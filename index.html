@@ -1117,7 +1117,7 @@ body.is-menu-open .scroller{overflow:hidden;}
   --deep2:#414B44;
   --on-deep:#F2F0E7;
   --on-deep-soft:#DCDFD4;
-  --gold:#C2A87C;
+  --gold:#BFA679;
 }
 
 /* --- 写真の上に載るテキストの濃度 --- */
@@ -1918,6 +1918,9 @@ p,li,.sc-p,.d-p,.f-p{text-align:justify;text-justify:inter-ideograph;word-break:
 .sc-eyebrow,.btn-more,.lbl,.val,figcaption,th,td{text-align:inherit;}
 /* イタリック不使用（両ページ共通の方針） */
 em,i,cite,address,dfn,var{font-style:normal;}
+/* プラン：セカンドページに合わせて PLAN 01〜03 のタグを表示 */
+#c-plans .pl-tx .pl-tag{display:inline-block;font-family:var(--latin);font-style:normal;font-size:clamp(15px,1.25vw,19px);
+  letter-spacing:.2em;line-height:1;color:#BFA679;padding-bottom:.5em;border-bottom:1px solid #BFA679;margin-bottom:4px;}
 </style>
 </head>
 <body>
@@ -2244,6 +2247,7 @@ em,i,cite,address,dfn,var{font-style:normal;}
       <ul class="sc-spec pl-list rv d3">
       <li class="rv d3">
         <div class="pl-tx">
+          <span class="pl-tag">PLAN 01</span>
           <span class="lbl">食卓が、中心。</span>
           <span class="val">ダイニング・コア</span>
           <span class="d">食事のあともそのまま寛げるラウンジのようなダイニングを、家の奥の特等席に。キッチンは横並びで配膳がスムーズ。</span>
@@ -2254,6 +2258,7 @@ em,i,cite,address,dfn,var{font-style:normal;}
       </li>
       <li class="rv d3">
         <div class="pl-tx">
+          <span class="pl-tag">PLAN 02</span>
           <span class="lbl">キッチンが、中心。</span>
           <span class="val">キッチン・コア</span>
           <span class="d">大きな作業テーブルがそのままダイニングに。作る・食べる・話すが、ひとつの場所で起こる間取り。</span>
@@ -2264,6 +2269,7 @@ em,i,cite,address,dfn,var{font-style:normal;}
       </li>
       <li class="rv d3">
         <div class="pl-tx">
+          <span class="pl-tag">PLAN 03</span>
           <span class="lbl">床座が、中心。</span>
           <span class="val">リビング・コア</span>
           <span class="d">ソファを置いてもなお床が余るリビングが中心。天井を低く抑え、さっと片づく収納を周りに。</span>
