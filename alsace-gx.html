@@ -611,7 +611,7 @@ h1{font-size:46px;line-height:1.55;letter-spacing:.12em;color:#fff}
 .loader.st1 .ld-line{width:320px}
 .loader.st2 .ld-line{opacity:0}
 .loader.st2 .ld-thumb{height:180px;opacity:1}
-.loader.st3 .ld-thumb{width:100vw;height:100vh}
+.loader.st3 .ld-thumb{width:100vw;height:100svh}
 .loader.st3 .ld-ghost{opacity:1;color:rgba(255,255,255,.92);-webkit-text-stroke-color:rgba(255,255,255,.92);text-shadow:0 2px 24px rgba(0,0,0,.12)}
 body.loading{overflow:hidden}
 
@@ -625,7 +625,8 @@ body.loading{overflow:hidden}
       .ld-thumb{width:220px}
   .loader.st1 .ld-line{width:220px}
   .loader.st2 .ld-thumb{height:124px}
-  .loader.st3 .ld-thumb{width:100vw;height:100vh;height:100lvh} /* スマホ：st2の高さ指定が後勝ちしないよう再指定 */
+  .loader.st3 .ld-thumb{width:100vw;height:100svh} /* ヒーロー（100svh）と同じ高さにして、切り替わりで画角が動かないようにする */
+  .mv-lead br{display:none}
   .ld-ghost{font-size:clamp(36px,12.5vw,66px);letter-spacing:.06em}
 }
 @media (prefers-reduced-motion:reduce){
