@@ -670,6 +670,13 @@ body.loading{overflow:hidden}
 .fixbar{transition:transform .35s ease,opacity .35s ease}
 body.in-mv .fixbar{transform:translateY(110%);opacity:0;pointer-events:none}
 
+
+/* ===== v21 フルスクリーンの高さ：ブラウザのバーの伸縮に追従（dvh） ===== */
+.s1 .stage{height:100svh;height:100dvh}
+.snap.s2,.snap.s3{height:100svh;height:100dvh}
+.loader.st3 .ld-thumb{height:100svh;height:100dvh}
+@media (max-width:760px){.s1 .stage{height:100svh;height:100dvh}.snap.s2,.snap.s3{height:100svh;height:100dvh}.loader.st3 .ld-thumb{height:100svh;height:100dvh}}
+
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.snap>.img{transform:none;transition:none}.rv{opacity:1;transform:none;transition:none}}
 </style>
 </head>
