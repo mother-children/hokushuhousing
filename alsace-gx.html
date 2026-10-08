@@ -665,6 +665,11 @@ body.loading{overflow:hidden}
 
 .mv-word .hy,.ld-ghost .hy{font-family:Georgia,'Times New Roman',serif;font-weight:400} /* Cormorantのハイフンは斜めのため水平な書体に */
 
+
+/* ===== v20 冒頭3画面（フルスクリーン）の間は下部固定バーを隠す ===== */
+.fixbar{transition:transform .35s ease,opacity .35s ease}
+body.in-mv .fixbar{transform:translateY(110%);opacity:0;pointer-events:none}
+
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.snap>.img{transform:none;transition:none}.rv{opacity:1;transform:none;transition:none}}
 </style>
 </head>
@@ -706,7 +711,6 @@ body.loading{overflow:hidden}
     <h2 class="rv">冬の朝も窓辺で過ごす</h2>
     <p class="rv d2">北洲は45年の研究から、いつも春のように暖かい<br>「トコハル（常春）」の住まいを目指してきました。<br>大きな窓のあるリビングで、冬の朝を過ごす家です。</p>
   </div>
-  <p class="snap-ind">02 / 03</p>
 </section>
 
 <section class="snap s3">
@@ -718,7 +722,6 @@ body.loading{overflow:hidden}
     <h2 class="rv">屋根で電気をつくる</h2>
     <p class="rv d2">黒い屋根の大きな面に太陽光を載せ、<br>昼につくった電気を家で使います。<br>太陽光を載せても、大屋根のかたちはそのままです。</p>
   </div>
-  <p class="snap-ind">03 / 03</p>
 </section>
 
 <!-- ここから通常スクロール -->
@@ -1019,7 +1022,7 @@ body.loading{overflow:hidden}
   snaps.forEach(s=>io.observe(s.querySelector('.stage')||s));
 
   /* メインビジュアル：スクロール量で全画面→カードに分解（--p を 0→1 で更新） */
-  const mv=document.querySelector('.s1'),stage=mv.querySelector('.stage');
+  const mv=document.querySelector('.s1'),stage=mv.querySelector('.stage'),body=document.body;
   function scrub(){
     const start=mv.offsetTop,len=mv.offsetHeight-stage.offsetHeight;
     const p=Math.min(1,Math.max(0,(scrollY-start)/len));
@@ -1027,6 +1030,7 @@ body.loading{overflow:hidden}
     if(!fine)root.classList.toggle('jsnap',scrollY<start+len-2); /* タッチ端末：分解アニメ中はCSSスナップを切る */
     const s2top=snaps[1].offsetTop,restTop=rest.offsetTop,hh=head.offsetHeight;
     head.classList.toggle('solid',(p>.6&&scrollY<s2top-hh)||scrollY>=restTop-hh); /* 2・3画面目の写真の上では透明 */
+    body.classList.toggle('in-mv',scrollY<restTop-innerHeight*.5); /* 4画面目が半分見えるまで固定バーを隠す */
   }
   let tick=false;
   addEventListener('scroll',()=>{if(!tick){tick=true;requestAnimationFrame(()=>{scrub();tick=false;});}},{passive:true});
@@ -1034,7 +1038,7 @@ body.loading{overflow:hidden}
   scrub();
 
   /* ローダー：回転する角丸→サムネイル→全画面→ヒーローへ */
-  const ld=document.getElementById('loader'),body=document.body;
+  const ld=document.getElementById('loader');
   function finishLoader(){
     if(!ld||ld.classList.contains('done'))return;
     ld.classList.add('done');body.classList.remove('loading');mv.classList.add('on');
